@@ -1,0 +1,41 @@
+{% extends "quotesapp/base.html" %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+
+    {% block title %}
+    <title>Quotes</title>
+    {% endblock %}
+    {% block style %}
+    <style>
+        body{
+        background-image:url("https://cdn3.f-cdn.com/contestentries/28958/3447846/51e2e6b21f78b_thumb900.jpg")
+        }
+    </style>
+    {% endblock %}
+
+</head>
+<body>
+{% block content %}
+<h3>this tag is associated with {{tag.quote_set.count}} quote{{ tag.quote_set.count|pluralize }}</h3><br>
+{% if tag.quote_set.all %}
+{% for quote in tag.quote_set.all %}
+
+<li>{{quote.text|title}}&nbsp;<small><b>tags:</b></small>
+ {% for tag in quote.tag.all %}
+<b><a href="{{tag.get_absolute_url}}">|{{tag.name|title}}|</a></b>
+{% endfor %} &nbsp;<br><br><br>
+</li>
+{% empty %}
+<em>no quotes in this tag</em>
+{% endfor %}
+{% endif %}
+{% endblock %}
+</body>
+</html>

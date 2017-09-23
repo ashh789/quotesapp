@@ -1,0 +1,60 @@
+{% extends "quotesapp/base.html" %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Bootstrap Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    {% block title %}
+    <title>Authors</title>
+    {% endblock %}
+
+{% block style %}
+    <style>
+
+        li{
+        display:inline;
+        font-size:30px;
+        margin:62px
+        }
+        body{
+        background-image:url("http://www.rgbstock.com/cache1qeyNY/users/x/xy/xymonau/300/mX8RmCW.jpg")
+        }
+
+    </style>
+    {% endblock %}
+
+
+</head>
+<body>
+{% block content %}
+<h3 style="margin-left:80%">sort by: <a href="{% url "tagpage" %}">Tag</a></h3>
+
+<div class="container-fluid">
+     <img src="https://content.artofmanliness.com/uploads/2010/02/plato31.jpg" class="img-circle" alt="image" width="230"
+                 height="180"></a>&nbsp;&nbsp;
+
+    <img src="http://service-ability.com/wp-content/uploads/2010/12/gandhi.jpg" class="img-circle" alt="image" width="230"
+                 height="180"></a> &nbsp;&nbsp;
+    <img src="https://i.pinimg.com/236x/14/55/26/145526dd28f7bacfeec091dd9134610e--buddha-thoughts-bodhi-tree.jpg" class="img-circle" alt="image" width="230"
+                 height="180"></a>&nbsp;&nbsp;
+
+    <img src="http://cdn.ebaumsworld.com/mediaFiles/picture/77662/84737812.jpg" class="img-circle" alt="image" width="230"
+                 height="180"></a>
+    <ul>
+        {% for p in person %}
+    <li><a href="{{p.get_absolute_url}}" style="color:red">{{p.name|title}}</a> </li>
+        {% endfor %}
+
+    </ul>
+
+
+</div>
+{% endblock %}
+</div>
+
+</body>
+</html>

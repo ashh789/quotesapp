@@ -1,0 +1,32 @@
+{% extends "quotesapp/base.html" %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    {% block title %}
+    <title>Quotes</title>
+    {% endblock %}
+     {% block style %}
+    <style>
+        body{
+        background-image:url("https://cdn3.f-cdn.com/contestentries/28958/3447846/51e2e6b21f78b_thumb900.jpg")
+        }
+    </style>
+    {% endblock %}
+</head>
+<body>
+{% block content %}
+{% for q in person_quotes %}
+
+<i><h5><li>{{q.text|title}}</li></h5></i>
+
+<br>
+{% empty %}
+No quotes told by this person
+
+{% endfor %}
+
+{% endblock %}
+</body>
+</html>

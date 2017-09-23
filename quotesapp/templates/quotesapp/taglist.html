@@ -1,0 +1,31 @@
+{% extends "quotesapp/base.html" %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <meta charset="UTF-8">
+    {% block title %}
+    <title>Tags</title>
+    {% endblock %}
+    {% block style %}
+    <style>
+        body{
+        background-image:url("http://www.rgbstock.com/cache1qeyNY/users/x/xy/xymonau/300/mX8RmCW.jpg")
+        }
+    </style>
+    {% endblock %}
+</head>
+<body>
+{% block content %}
+<h3 style="margin-left:80%">sort by: <a href="{% url "personpage" %}">Authors</a></h3>
+{% for tag in tag_list %}
+<h3><li><a href="{{tag.get_absolute_url}}" style="color:green">{{tag.name|title}}</a></li></h3><br>
+{% endfor %}
+
+{% endblock %}
+
+</body>
+</html>
